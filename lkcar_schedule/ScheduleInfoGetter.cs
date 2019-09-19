@@ -2,6 +2,7 @@
 using Snarkorel.lkcar_schedule.enums;
 using Snarkorel.lkcar_schedule.json;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -26,13 +27,13 @@ namespace Snarkorel.lkcar_schedule
             return responseBody;
         }
 
-        public DaysDto GetCommonDaysList()
+        public List<DaysDto> GetCommonDaysList()
         {
             var req = RequestUriFactory.GetCommonDaysListUri();
             var resp = HttpGetRequest(req);
             try
             {
-                return (DaysDto)JsonConvert.DeserializeObject(resp.Result, typeof(DaysDto));
+                return (List<DaysDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<DaysDto>));
             }
             catch (Exception)
             {
@@ -40,13 +41,13 @@ namespace Snarkorel.lkcar_schedule
             }
         }
 
-        public SeasonDto GetCommonSeasonsList()
+        public List<SeasonDto> GetCommonSeasonsList()
         {
             var req = RequestUriFactory.GetCommonSeasonsListUri();
             var resp = HttpGetRequest(req);
             try
             {
-                return (SeasonDto)JsonConvert.DeserializeObject(resp.Result, typeof(SeasonDto));
+                return (List<SeasonDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<SeasonDto>));
             }
             catch (Exception)
             {
@@ -54,13 +55,13 @@ namespace Snarkorel.lkcar_schedule
             }
         }
 
-        public VehicleTypeDto GetCommonVehicleTypesList()
+        public List<VehicleTypeDto> GetCommonVehicleTypesList()
         {
             var req = RequestUriFactory.GetCommonVehicleTypesListUri();
             var resp = HttpGetRequest(req);
             try
             {
-                return (VehicleTypeDto)JsonConvert.DeserializeObject(resp.Result, typeof(VehicleTypeDto));
+                return (List<VehicleTypeDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<VehicleTypeDto>));
             }
             catch (Exception)
             {
@@ -68,13 +69,13 @@ namespace Snarkorel.lkcar_schedule
             }
         }
 
-        public RouteDto GetRoutesList(VehicleType vehicleType)
+        public List<RouteDto> GetRoutesList(VehicleType vehicleType)
         {
             var req = RequestUriFactory.GetRoutesListUri(vehicleType);
             var resp = HttpGetRequest(req);
             try
             {
-                return (RouteDto)JsonConvert.DeserializeObject(resp.Result, typeof(RouteDto));
+                return (List<RouteDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<RouteDto>));
             }
             catch (Exception)
             {
@@ -110,13 +111,13 @@ namespace Snarkorel.lkcar_schedule
             }
         }
 
-        public DirectionDto GetDirections(DaysOfOperation day, int routeId)
+        public List<DirectionDto> GetDirections(DaysOfOperation day, int routeId)
         {
             var req = RequestUriFactory.GetDirectionsUri(day, routeId);
             var resp = HttpGetRequest(req);
             try
             {
-                return (DirectionDto)JsonConvert.DeserializeObject(resp.Result, typeof(DirectionDto));
+                return (List<DirectionDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<DirectionDto>));
             }
             catch (Exception)
             {
@@ -124,13 +125,13 @@ namespace Snarkorel.lkcar_schedule
             }
         }
 
-        public StopDto GetStops(DaysOfOperation day, Direction direction, int routeId, Season season, VehicleType vehicleType)
+        public List<StopDto> GetStops(DaysOfOperation day, Direction direction, int routeId, Season season, VehicleType vehicleType)
         {
             var req = RequestUriFactory.GetStopsUri(day, direction, routeId, season, vehicleType);
             var resp = HttpGetRequest(req);
             try
             {
-                return (StopDto)JsonConvert.DeserializeObject(resp.Result, typeof(StopDto));
+                return (List<StopDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<StopDto>));
             }
             catch (Exception)
             {
