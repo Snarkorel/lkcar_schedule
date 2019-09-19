@@ -1,8 +1,8 @@
 ﻿namespace Snarkorel.lkcar_schedule.json
 {
-    public class VehicleType //req: http://lkcar.transport.mos.ru/ExternalService/api/schedule/vehicle-type
+    public class VehicleType
     {
-        public int id { get; set; } //vehicle type id
+        public int id { get; set; } //vehicle type id. 700 - автобус, 800 - троллейбус, 900 - трамвай
         public string name { get; set; }
     }
 }

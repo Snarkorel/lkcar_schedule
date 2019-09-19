@@ -2,9 +2,9 @@
 
 namespace Snarkorel.lkcar_schedule.json
 {
-    public class Schedule //TODO: optimize. Request: http://lkcar.transport.mos.ru/ExternalService/api/schedule/?day=WEEKDAYS&directionId=0&routeId=255&season=SUMMER&stopId=11194&vehicleTypeId=700
+    public class Schedule
     {
-        public List<string>[] _hour { get; set; }
+        public List<string>[] _hour { get; set; } //TODO: test this
         //public List<string> __invalid_name__0 { get; set; }
         //public List<string> __invalid_name__1 { get; set; }
         //public List<string> __invalid_name__2 { get; set; }

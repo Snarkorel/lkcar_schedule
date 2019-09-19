@@ -48,6 +48,7 @@
     <Compile Include="json\Schedule.cs" />
     <Compile Include="json\Season.cs" />
     <Compile Include="json\Stop.cs" />
+    <Compile Include="json\ValidityTime.cs" />
     <Compile Include="json\VehicleType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
