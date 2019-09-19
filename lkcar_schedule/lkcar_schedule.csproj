@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2DBBC051-3CE4-4200-82D1-1465EC213A89}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lkcar_schedule</RootNamespace>
+    <RootNamespace>Snarkorel.lkcar_schedule</RootNamespace>
     <AssemblyName>lkcar_schedule</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,8 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="json\Days.cs" />
+    <Compile Include="json\Direction.cs" />
+    <Compile Include="json\Route.cs" />
+    <Compile Include="json\Schedule.cs" />
+    <Compile Include="json\Season.cs" />
+    <Compile Include="json\Stop.cs" />
+    <Compile Include="json\VehicleType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestUriFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

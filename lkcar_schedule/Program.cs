@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace lkcar_schedule
+﻿namespace Snarkorel.lkcar_schedule
 {
-    class Program
+    class Program //TODO: newtonsoft JSON
     {
         static void Main(string[] args)
         {
