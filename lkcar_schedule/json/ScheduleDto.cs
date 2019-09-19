@@ -2,7 +2,7 @@
 
 namespace Snarkorel.lkcar_schedule.json
 {
-    public class Schedule
+    public class ScheduleDto
     {
         public List<string>[] _hour { get; set; } //TODO: test this
         //public List<string> __invalid_name__0 { get; set; }

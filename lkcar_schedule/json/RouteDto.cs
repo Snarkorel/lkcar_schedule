@@ -1,8 +1,8 @@
 ﻿namespace Snarkorel.lkcar_schedule.json
 {
-    public class Direction
+    public class RouteDto
     {
         public int id { get; set; } //route id
-        public string direction { get; set; }
+        public string routeName { get; set; }
     }
 }
