@@ -1,5 +1,6 @@
 ﻿using System;
 using Snarkorel.lkcar_schedule.enums;
+using Snarkorel.lkcar_schedule.json;
 
 namespace Snarkorel.lkcar_schedule
 {
@@ -7,7 +8,7 @@ namespace Snarkorel.lkcar_schedule
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("starting...");
+            Console.WriteLine("Starting...");
 
             var routeId = 160;
             var seasonId = Season.SUMMER;
@@ -18,44 +19,81 @@ namespace Snarkorel.lkcar_schedule
 
             var infoGetter = new ScheduleInfoGetter();
 
+            Console.WriteLine("Common days of operation:");
             var days = infoGetter.GetCommonDaysList();
-            //Console.WriteLine("days: {0} {1}", days.id, days.text); //TODO
+            foreach (DaysDto day in days)
+            {
+                Console.WriteLine("Day: {0} - {1}", day.id, day.text);
+            }
+            Console.WriteLine("============");
 
+            Console.WriteLine("Common seasons:");
             var seasons = infoGetter.GetCommonSeasonsList();
-            //Console.WriteLine("days: {0} {1}", seasons.id, seasons.text); //TODO
+            foreach (SeasonDto season in seasons)
+            {
+                Console.WriteLine("Season: {0} - {1}", season.id, season.text);
+            }
+            Console.WriteLine("============");
 
+            Console.WriteLine("Common vehicle types:");
             var vehicleTypes = infoGetter.GetCommonVehicleTypesList();
-            //Console.WriteLine("vehicleTypes: {0} {1}", vehicleTypes.id, vehicleTypes.name); //TODO
+            foreach (VehicleTypeDto vehicleType in vehicleTypes)
+            {
+                Console.WriteLine("vehicleType: {0} - {1}", vehicleType.id, vehicleType.name);
+            }
+            Console.WriteLine("============");
 
+            Console.WriteLine("Routes by vehicle type {0}:", vehicleId);
             var routes = infoGetter.GetRoutesList(vehicleId);
-            //TODO
+            foreach (RouteDto route in routes)
+            {
+                Console.WriteLine("route: {0} - {1}", route.id, route.routeName);
+            }
+            Console.WriteLine("============");
 
+            Console.WriteLine("Days of operation for route id={0}:", routeId);
             var daysForRoute = infoGetter.GetRouteDaysList(routeId);
-            //TODO
+            Console.WriteLine("Days: {0} - {1}", daysForRoute.id, daysForRoute.text);
+            Console.WriteLine("============");
 
+            Console.WriteLine("Seasons for route id={0}:", routeId);
             var seasonsForRoute = infoGetter.GetRouteSeasonsList(routeId);
-            //TODO
+            Console.WriteLine("Season: {0} - {1}", seasonsForRoute.id, seasonsForRoute.text);
+            Console.WriteLine("============");
 
+            Console.WriteLine("Directions for route id={0}, daysOfOperation={1}:", routeId, daysId);
             var directions = infoGetter.GetDirections(daysId, routeId);
-            //TODO
+            foreach (DirectionDto direction in directions)
+            {
+                Console.WriteLine("direction: {0} - {1}", direction.id, direction.direction);
+            }
+            Console.WriteLine("============");
 
+            Console.WriteLine("Stops list for route id={0}, daysOfOperation={1}, direction={2}, season={3}, vehicleType={4}:", routeId, daysId, directionId, seasonId, vehicleId);
             var stops = infoGetter.GetStops(daysId, directionId, routeId, seasonId, vehicleId);
-            //TODO
+            foreach (StopDto stop in stops)
+            {
+                Console.WriteLine("stop: {0} - {1}", stop.id, stop.stopName);
+            }
+            Console.WriteLine("============");
 
             var schedule = infoGetter.GetSchedule(daysId, directionId, routeId, seasonId, stopId, vehicleId); //FAILED
             //TODO
+            Console.WriteLine("============");
 
             var routeInfo = infoGetter.GetRouteInfo(routeId);
             //TODO
+            Console.WriteLine("============");
 
             var stopInfo = infoGetter.GetStopInfo(stopId);
             //TODO
+            Console.WriteLine("============");
 
             var validityTime = infoGetter.GetValidityTime(daysId, directionId, routeId, seasonId, vehicleId);
             //TODO
-
-
-            Console.WriteLine("finished");
+            Console.WriteLine("============");
+            
+            Console.WriteLine("Finished!");
         }
     }
 }
