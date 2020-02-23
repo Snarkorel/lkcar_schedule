@@ -11,8 +11,10 @@ namespace Snarkorel.lkcar_schedule
         private static string CommonVehicleTypeRequestFormat = "vehicle-type";
         //Route-specific requests
         private static string RoutesRequestFormat = "route?vehicleTypeId={0}"; //vehicleTypeId = 700
-        private static string RouteDaysRequestFormat = "day?routeId={0}";
-        private static string RouteSeasonsRequestFormat = "season?routeId={0}";
+        private static string RouteDayRequestFormat = "day?routeId={0}"; //current day
+        private static string RouteDaysRequestFormat = "days?routeId={0}"; //all days of operation
+        private static string RouteSeasonRequestFormat = "season?routeId={0}"; //current season
+        private static string RouteSeasonsRequestFormat = "seasons?routeId={0}"; //all seasons
         private static string DirectionRequestFormat = "direction?day={0}&routeId={1}"; //day WEEKDAYS, routeId = 160
         private static string StopsRequestFormat = "stop?day={0}&directionId={1}&routeId={2}&season={3}&vehicleTypeId={4}"; //WEEKDAYS, dirId = 1, routeId = 160, season = SUMMER, vehTId = 700
         private static string ScheduleRequestFormat = "?day={0}&directionId={1}&routeId={2}&season={3}&stopId={4}&vehicleTypeId={5}"; //WEEKDAYS, dirId = 1, routeId = 160, season = SUMMER, stop = 18142, vehTId = 700
@@ -47,9 +49,19 @@ namespace Snarkorel.lkcar_schedule
             return GetRequestUri(string.Format(RoutesRequestFormat, (int)vehicleType));
         }
 
+        public static string GetRouteCurrentDayUri(int routeId)
+        {
+            return GetRequestUri(string.Format(RouteDayRequestFormat, routeId));
+        }
+
         public static string GetRouteDaysListUri(int routeId)
         {
             return GetRequestUri(string.Format(RouteDaysRequestFormat, routeId));
+        }
+
+        public static string GetRouteCurrentSeasonUri(int routeId)
+        {
+            return GetRequestUri(string.Format(RouteSeasonRequestFormat, routeId));
         }
 
         public static string GetRouteSeasonsListUri(int routeId)

@@ -53,12 +53,28 @@ namespace Snarkorel.lkcar_schedule
 
             Console.WriteLine("Days of operation for route id={0}:", routeId);
             var daysForRoute = infoGetter.GetRouteDaysList(routeId);
-            Console.WriteLine("Days: {0} - {1}", daysForRoute.id, daysForRoute.text);
+            foreach (DaysDto day in daysForRoute)
+            {
+                Console.WriteLine("day: {0} - {1}", day.id, day.text);
+            }
+            Console.WriteLine("============");
+
+            Console.WriteLine("Current day of operation for route id={0}:", routeId);
+            var currentDayForRoute = infoGetter.GetRouteCurrentDay(routeId);
+            Console.WriteLine("day: {0} - {1}", currentDayForRoute.id, currentDayForRoute.text);
             Console.WriteLine("============");
 
             Console.WriteLine("Seasons for route id={0}:", routeId);
             var seasonsForRoute = infoGetter.GetRouteSeasonsList(routeId);
-            Console.WriteLine("Season: {0} - {1}", seasonsForRoute.id, seasonsForRoute.text);
+            foreach (SeasonDto season in seasonsForRoute)
+            {
+                Console.WriteLine("season: {0} - {1}", season.id, season.text);
+            }
+            Console.WriteLine("============");
+
+            Console.WriteLine("Current season for route id={0}:", routeId);
+            var currentSeasonForRoute = infoGetter.GetRouteCurrentSeason(routeId);
+            Console.WriteLine("season: {0} - {1}", currentSeasonForRoute.id, currentSeasonForRoute.text);
             Console.WriteLine("============");
 
             Console.WriteLine("Directions for route id={0}, daysOfOperation={1}:", routeId, daysId);
@@ -81,16 +97,21 @@ namespace Snarkorel.lkcar_schedule
             //TODO
             Console.WriteLine("============");
 
+            Console.WriteLine("Route info for route id={0}:", routeId);
             var routeInfo = infoGetter.GetRouteInfo(routeId);
-            //TODO
+            Console.WriteLine("routes: {0} - {1}", routeInfo.id, routeInfo.routeName);
             Console.WriteLine("============");
 
+            Console.WriteLine("Stop info for stop id={0}:", stopId);
             var stopInfo = infoGetter.GetStopInfo(stopId);
-            //TODO
+            Console.WriteLine("stop: {0} - {1}", stopInfo.id, stopInfo.stopName);
             Console.WriteLine("============");
 
-            var validityTime = infoGetter.GetValidityTime(daysId, directionId, routeId, seasonId, vehicleId);
-            //TODO
+            Console.WriteLine("Validity time for route={0} daysId={1} directionId={2} seasonId={3}, vehicleId={4}:", routeId, daysId, directionId, seasonId, vehicleId);
+            var validityTime = infoGetter.GetValidityTime(daysId, directionId, routeId, seasonId, vehicleId); //there is an unknown format. It's not UnixTime nor .NET ticks
+            //var fromTime = (new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(validityTime.fromTime); //converting UnixTime to DateTime
+            //var toTime = (new DateTime(1970, 1, 1, 0, 0, 0, 0)).AddSeconds(validityTime.toTime);
+            //Console.WriteLine("Valid from {0} till {1}", fromTime, toTime);
             Console.WriteLine("============");
             
             Console.WriteLine("Finished!");

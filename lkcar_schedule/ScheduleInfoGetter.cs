@@ -83,9 +83,23 @@ namespace Snarkorel.lkcar_schedule
             }
         }
 
-        public DaysDto GetRouteDaysList(int routeId)
+        public List<DaysDto> GetRouteDaysList(int routeId)
         {
             var req = RequestUriFactory.GetRouteDaysListUri(routeId);
+            var resp = HttpGetRequest(req);
+            try
+            {
+                return (List<DaysDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<DaysDto>));
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public DaysDto GetRouteCurrentDay(int routeId)
+        {
+            var req = RequestUriFactory.GetRouteCurrentDayUri(routeId);
             var resp = HttpGetRequest(req);
             try
             {
@@ -97,9 +111,23 @@ namespace Snarkorel.lkcar_schedule
             }
         }
 
-        public SeasonDto GetRouteSeasonsList(int routeId)
+        public List<SeasonDto> GetRouteSeasonsList(int routeId)
         {
             var req = RequestUriFactory.GetRouteSeasonsListUri(routeId);
+            var resp = HttpGetRequest(req);
+            try
+            {
+                return (List<SeasonDto>)JsonConvert.DeserializeObject(resp.Result, typeof(List<SeasonDto>));
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public SeasonDto GetRouteCurrentSeason(int routeId)
+        {
+            var req = RequestUriFactory.GetRouteCurrentSeasonUri(routeId);
             var resp = HttpGetRequest(req);
             try
             {
