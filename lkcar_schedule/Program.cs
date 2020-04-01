@@ -93,8 +93,22 @@ namespace Snarkorel.lkcar_schedule
             }
             Console.WriteLine("============");
 
-            var schedule = infoGetter.GetSchedule(daysId, directionId, routeId, seasonId, stopId, vehicleId); //FAILED
-            //TODO
+            Console.WriteLine("Schedule for route id={0}, daysOfOperation={1}, direction={2}, season={3}, vehicleType={4}, stopId={5}:", routeId, daysId, directionId, seasonId, vehicleId, stopId);
+            var schedule = infoGetter.GetSchedule(daysId, directionId, routeId, seasonId, stopId, vehicleId);
+            var scheduleDict = schedule.GetSchedule();
+            foreach(var hour in scheduleDict.Keys)
+            {
+                if (scheduleDict[hour] == null)
+                    continue;
+
+                Console.Write("{0}:\t", hour);
+
+                foreach(var minute in scheduleDict[hour])
+                {
+                    Console.Write("{0} ", minute);
+                }
+                Console.Write("\r\n");
+            }
             Console.WriteLine("============");
 
             Console.WriteLine("Route info for route id={0}:", routeId);
